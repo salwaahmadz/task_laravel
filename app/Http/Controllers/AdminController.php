@@ -8,6 +8,6 @@ class AdminController extends Controller
 {
     public function admin()
     {
-    	return view('layouts.master');
+    	return view('admin.mapping');
     }
 }
