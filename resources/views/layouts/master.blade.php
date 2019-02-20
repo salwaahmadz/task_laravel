@@ -125,7 +125,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview active">
           <ul class="treeview-menu">
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Mapping</a></li>
+            <li class="active"><a href="/admin"><i class="fa fa-circle-o"></i>Mapping</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Retrace</a></li>
           </ul>
         </li>

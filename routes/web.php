@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin/upload', 'AdminController@upload')->name('admin.upload');
+Route::get('/admin/{id_upload}/edit', 'AdminController@edit');

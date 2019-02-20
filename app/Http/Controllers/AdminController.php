@@ -37,4 +37,11 @@ class AdminController extends Controller
 
     	     return redirect('admin')->with('sukses', "Data berhasil ditambahkan");
         }
+
+        public function edit($id_upload)
+        {
+            $upload = \App\upload::find($id_upload);
+            return view('admin/edit', ['upload'=>$upload]);
+        }
+
     }

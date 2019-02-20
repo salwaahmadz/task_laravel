@@ -21,7 +21,7 @@
 <!-- Main Content -->
 <section class="content">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-sm-12">
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Data Manage</h3>
@@ -42,7 +42,7 @@
               <td>{{$file["filename"]}}</td>
               <td style="text-align:center;">
                <a href="#" class="btn btn-primary btn-sm">Download</a>
-               <a href="#" class="btn btn-warning btn-sm">Update</a>
+               <a href="/admin/{{$file->id_upload}}/edit" class="btn btn-warning btn-sm">Update</a>
                <a href="#" class="btn btn-danger btn-sm">Delete</a>
              </td>
              <td>{{$file["created_at"]}}</td>
