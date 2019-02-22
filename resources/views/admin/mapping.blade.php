@@ -8,6 +8,12 @@
 </div>
 @endif
 
+@if(session('gagal'))
+<div class="alert alert-danger" role="alert">
+ {{session('gagal')}}
+</div>
+@endif
+
 @if (count($errors) > 0)
 @foreach ($errors->all() as $error)
 <p class="alert alert-danger">{{ $error }}</p>
@@ -16,6 +22,10 @@
 
 <section class="content-header">
   <h1><center>Mapping Files</center></h1>
+        <!-- Modal Button Trigger -->
+         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px; float: right;">
+         Insert Data</button>
+         <!-- End Modal Trigger -->
 </section>
 
 <!-- Main Content -->
@@ -39,21 +49,17 @@
             @foreach($files as $file)
             <tr>
               <td>{{$file["version"]}}</td>
-              <td>{{$file["filename"]}}</td>
+              <td>{{$file["file_name"]}}</td>
               <td style="text-align:center;">
-               <a href="#" class="btn btn-primary btn-sm">Download</a>
+               <a href="upload/{{$file->file_name}}" class="btn btn-primary btn-sm" download="{{$file->file_name}}">Download</a>
                <a href="/admin/{{$file->id_upload}}/edit" class="btn btn-warning btn-sm">Update</a>
-               <a href="#" class="btn btn-danger btn-sm">Delete</a>
+               <a href="/admin/{{$file->id_upload}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
              </td>
              <td>{{$file["created_at"]}}</td>
              <td>{{$file["updated_at"]}}</td>
            </tr>
            @endforeach
          </table>
-         <!-- Modal Button Trigger -->
-         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" style="margin-top: 10px; float: right;">
-         Insert Data</button>
-         <!-- End Modal Trigger -->
        </div>
      </div>
    </div>
@@ -76,7 +82,7 @@
          {{csrf_field()}}
          <div class="form-group">
            <label for="exampleInputEmail1">Upload File</label>
-           <input name="filename" type="File" id="exampleInputEmail1" aria-describedby="emailHelp">
+           <input name="file" type="File" id="exampleInputEmail1" aria-describedby="emailHelp">
          </div>
          
          <div class="form-group">
