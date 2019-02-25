@@ -8,15 +8,43 @@ use App\upload;
 use DB;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+use App\ModelUser;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class AdminController extends Controller
 {
-    public function index()
+    /*public function index()
     {
     	$data["files"] = upload::all();
-    	return view('admin.mapping', $data);
+        if(!Session::get('login')){
+            return redirect('login')->with('alert', 'Anda Harus Login Terlebih Dahulu');
+        }
+        else{
+    	   return view('admin', $data);
+            }
+    }*/
+
+    /*INDEX MAPPING & RETRACE*/
+    public function index()
+    {
+        $files = upload::all();
+        if(!Session::get('login')){
+            return redirect('login')->with('gagal', 'Anda Harus Login Terlebih Dahulu');
+        }
+        else{
+           return view('admin.mapping')->with('files', $files);
+            }
     }
 
+    public function retrace(){
+        $data["files"] = upload::all();
+        return view('admin.retrace', $data);
+    }
+    /*AKHIR INDEX*/
+
+    /*FUNGSI CRUD*/
     public function upload(ShareFormRequest $request)
     {
         $upload = "N";
@@ -83,5 +111,82 @@ class AdminController extends Controller
             $files = DB::table('upload.upload')->get();
             return view('admin.mapping', compact('files'));
         }
+        /*AKHIR FUNGSI CRUD*/
+
+        /*FUNGSI LOGIN*/
+        public function login()
+        {
+            return view('login');
+        }
+
+        public function loginPost(Request $request)
+        {
+            $files = upload::all();
+            $email = $request->email;
+            $password = $request->password;
+            $data = ModelUser::where('email', $email)->first();
+            //dd($data);
+            if($data){
+                if(Hash::check($password,   $data->password)){
+                    Session::put('name',    $data->name);
+                    Session::put('email',   $data->email);
+                    Session::put('login',   TRUE);
+                    return view('admin.mapping')->with('files',$files);
+                }else{
+                    return redirect('login')->with('gagal', "Email atau Password yang anda masukan salah");
+                }
+            }else{
+                    return redirect('login')->with('gagal', "Email atau Password yang anda masukan salah");
+        }       
+}
+
+        public function logout()
+        {
+            Session::flush();
+            return redirect ('login')->with('gagal', "Anda telah Log Out! Silahkan Login kembali");
+        }
+
+        public function register()
+        {
+            return view('register');
+        }
+
+        public function registerPost(request $request)
+        {
+            $this->validate($request, [
+            'name' => 'required|min:4',
+            'email' => 'required|min:4|email|unique:users',
+            'password' => 'required',
+            'confirmation' => 'required|same:password',
+        ]);
+
+        $data =  new ModelUser();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+        $data->save();
+        return redirect('login')->with('sukses','Kamu berhasil Register');
+        }
+        /*AKHIR FUNGSI LOGIN*/
+
+        /*ENCRYPT & DECRYPT*/
+
+        public function decrypt()
+        {
+            try {
+                $decrypted = decrypt($encryptedValue);
+            } catch (DecryptException $e) {
+                
+            }
+        }
+
+        public function encrypt()
+        {
+            $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+
+            $encrypted = $Encrypter->encrypt('encrypt');
+        }
+
+        /*AKHIR ENCRYPT & DECRYPT */
 
     }

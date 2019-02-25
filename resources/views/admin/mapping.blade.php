@@ -20,6 +20,38 @@
 @endforeach
 @endif
 
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="/asset/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{Session::get('name')}}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview active">
+          <ul class="treeview-menu">
+            <li class="active"><a href="admin.mapping"><i class="fa fa-circle-o"></i>Mapping</a></li>
+            <li><a href="{{ route('admin.retrace') }}"><i class="fa fa-circle-o"></i>Retrace</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
 <section class="content-header">
   <h1><center>Mapping Files</center></h1>
         <!-- Modal Button Trigger -->
