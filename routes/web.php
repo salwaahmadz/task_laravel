@@ -11,8 +11,26 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+Route::get('/', function () {
+    return view('login');
 });
 
-Route::get('/admin', 'AdminController@admin');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/retrace', 'AdminController@retrace')->name('admin.retrace');
+Route::post('/admin/upload', 'AdminController@upload')->name('admin.upload');
+Route::get('/admin/{id_upload}/edit', 'AdminController@edit');
+Route::post('/admin/{id_upload}/update', 'AdminController@update');
+Route::get('/admin/{id_upload}/delete', 'AdminController@delete');
+Route::get('/admin/download', 'AdminController@download');
+
+Route::get('/login', 'AdminController@login');
+Route::post('/loginPost', 'AdminController@loginPost');
+Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+Route::get('/register', 'AdminController@register');
+Route::post('registerPost', 'AdminController@registerPost');
+
+Route::post('/admin/retrace/decrypt', "AdminController@decrypt")->name('decrypt');
+Route::get('/admin/retrace/encrypt', "AdminController@encrypt")->name('encrypt');

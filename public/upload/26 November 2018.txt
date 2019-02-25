@@ -1,0 +1,9 @@
+Bengkel Maju Bersama (BMB) berencana membangun sistem komputerisasi.
+BMB memiliki pelanggan yang mungkin memilih nama, alamat, jenis kelamin. Pelanggan - pelanggan
+tersebut memiliki kendaraan yang tercatat NoPolosi, Merk, Warna.
+BMB memperkerjakan montir - montir terbaiknya yang memiliki nama, alamat, jenis kelamin, password
+Montir - montir tersebut melayani servis kendaraan setiap harinya, satu montir biasanya memegang
+satu pelanggan/kendaraan, dan servis yang dilakukan bisa terjadi lebih dari satu perbaikan.
+- Gambar Entity Relationship Diagram, Identifikasi atribut setiap entity
+- Buatkan Physical Data Diagram dengan mySql, relasikan setiap pk ke fk antara table
+- Buatkan View kendaraan terhadap pelanggan
