@@ -25,8 +25,7 @@ class ShareFormRequest extends FormRequest
     {
         return [
             'version' => 'required|String',
-            'file' => 'mimetypes:text/plain',
-            'email' => 'required|String'
+            'file' => 'mimetypes:text/plain'
         ];
     }
 
@@ -34,8 +33,7 @@ class ShareFormRequest extends FormRequest
     {
         return[
         'version.required'  => 'Please input the Version Number',
-        'file.mimetypes'    => 'Files can only have an extension of .txt',
-        'email.required'    =. 'Email or Password is was wrong'
+        'file.mimetypes'    => 'Files can only have an extension of .txt'
     ];
     }
 }

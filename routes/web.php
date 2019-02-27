@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/admin/retrace', 'AdminController@retrace')->name('admin.retrace');
 Route::post('/admin/upload', 'AdminController@upload')->name('admin.upload');
 Route::get('/admin/{id_upload}/edit', 'AdminController@edit');
 Route::post('/admin/{id_upload}/update', 'AdminController@update');
@@ -32,5 +31,5 @@ Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 Route::get('/register', 'AdminController@register');
 Route::post('registerPost', 'AdminController@registerPost');
 
-Route::post('/admin/retrace/decrypt', "AdminController@decrypt")->name('decrypt');
-Route::get('/admin/retrace/encrypt', "AdminController@encrypt")->name('encrypt');
+Route::get('/admin/retrace', 'AdminController@retrace')->name('admin.retrace');
+Route::get('/admin/retrace/retraceProcess', "AdminController@retraceProcess")->name('retrace.process');

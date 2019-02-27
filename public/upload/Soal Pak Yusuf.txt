@@ -1,0 +1,10 @@
+1. Bagaimanakah anda memulai mySQL?
+2. Bagaimanakah anda membuat sebuah database dalam mySQL?
+3. Apakah Default database dan bagaimanakah anda merubah default database
+4. Bagaimanakah anda membuat sebuah table dalam mySQL?
+5. Tipe data yang umum digunakan untuk mendefinisikan coloumn di table dan bagaimana anda mengidentifikasi kolom yang tidak menerima null value
+6. perintah apa yang anda gunakan untuk menambahkan baris pada table
+7. Perintah mana yang anda gunakan untuk menampilkan data dalam table 
+8. Perintah mana yang anda gunakan untuk merubah nilai dalam kolom di table
+9. Perintah mana untuk menghapus row dalam table
+10. 

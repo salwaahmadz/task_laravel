@@ -42,7 +42,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview active">
           <ul class="treeview-menu">
-            <li class="active"><a href="admin.mapping"><i class="fa fa-circle-o"></i>Mapping</a></li>
+            <li class="active"><a href="/admin"><i class="fa fa-circle-o"></i>Mapping</a></li>
             <li><a href="{{ route('admin.retrace') }}"><i class="fa fa-circle-o"></i>Retrace</a></li>
           </ul>
         </li>
@@ -55,7 +55,7 @@
 <section class="content-header">
   <h1><center>Mapping Files</center></h1>
         <!-- Modal Button Trigger -->
-         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px; float: right;">
+         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px; float: left;">
          Insert Data</button>
          <!-- End Modal Trigger -->
 </section>
@@ -65,20 +65,23 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Data Manage</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table class="table table-bordered">
-            <tr>	
+        <div class="box-header">
+              <h3 class="box-title">Data Manage</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>  
               <th style="text-align:center;">Version</th>
               <th style="text-align:center;">File Name</th>
               <th style="text-align:center;">Operation</th>
               <th style="text-align:center;">Created At</th>
               <th style="text-align:center;">Updated At</th>
             </tr>
-            @foreach($files as $file)
+                </thead>
+                <tbody>
+                @foreach($files as $file)
             <tr>
               <td>{{$file["version"]}}</td>
               <td>{{$file["file_name"]}}</td>
@@ -91,9 +94,19 @@
              <td>{{$file["updated_at"]}}</td>
            </tr>
            @endforeach
-         </table>
-       </div>
-     </div>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
    </div>
  </section>
  <!-- End Main Content -->
@@ -131,4 +144,5 @@
 </div>
 </div>
 <!-- End Modal -->
+
 @endsection

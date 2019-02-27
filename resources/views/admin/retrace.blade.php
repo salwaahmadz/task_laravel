@@ -37,26 +37,37 @@
   </section>
 
   <section style="margin-left: 20px;">
-  	<h3>Please select the version number</h3>
+  	<h4>Please select the version number</h4>
 
-  <select class="custom-select" style="width: 100px;">
-  	@foreach ($files as $file)
-  <option selected>{{$file["version"]}}</option>
+ <form action="{{ route('admin.retrace' )}}" method="get">
+    {{csrf_field()}}
+
+  <select class="custom-select" style="width: 100px; height: 30px; font-size: 20px;" name="version">
+  	@foreach ($uploads as $upload)
+  <option value="{{ $upload->version }}">{{$upload->version}}</option>
   	@endforeach
   </select>
   </section>
   <!-- End Header -->
 
+
   <!-- Main Content -->
-  <form action="{{ route('decrypt')}}" method="post">
-  	{{csrf_field()}}
-  <h2 style="text-align: center;">Please insert the fuscate text</h2>
-  <textarea style="width: 80%; height: 250px; margin-left: 10%;"></textarea>
+  <h4 style="text-align: center;">Please insert the fuscate text</h4>
+  <textarea style="width: 80%; height: 250px; margin-left: 20px;" name="input">{{\Request::get('input')}}</textarea>
   <br>
-  <button class="btn btn-primary btn-md" style="margin-left: 10%; margin-bottom: 5% ">Process</button>
   <br>
-  <h2 style="text-align: center;">Result</h2>
-  <textarea style="width: 80%; height: 250px; margin-left: 10%;"></textarea>
+  <button class="btn btn-primary btn-md" style="margin-left: 20px; margin-bottom: 5%">Process</button>
+  <br>
   </form>
-  <!-- End Main Content -->
+
+  <h4 style="text-align: center;">Result</h4>
+  <textarea style="width: 80%; height: 250px; margin-left: 20px;">
+    {{$data['input']}}
+  </textarea>
+  
+  <!-- <br>
+  <h4 style="text-align: center;">Result</h4>
+  <textarea style="width: 80%; height: 250px; margin-left: 20px;">
+  
+  </textarea> -->
 @endsection

@@ -1,0 +1,3 @@
+SELECT o.* FROM marinaslip ms, marina m , owner o WHERE ms.MarinaNum=m.MarinaNum and ms.OwnerNum=o.OwnerNum
+
+SELECT s.SlipID, m.MarinaNum, m.Name, m.Address o.OwnerNum, o.FirstName FROM MarinaNum m, marinaslip s, owner o WHERE m.MarinaNum=s.MarinaNum and o.OwnerNum=s.OwnerNum
