@@ -32,4 +32,10 @@ Route::get('/register', 'AdminController@register');
 Route::post('registerPost', 'AdminController@registerPost');
 
 Route::get('/admin/retrace', 'AdminController@retrace')->name('admin.retrace');
-Route::get('/admin/retrace/retraceProcess', "AdminController@retraceProcess")->name('retrace.process');
+Route::post('/admin/retrace/process', 'AdminController@process');
+
+// Route::post('admin/retrace/process', function(){
+// 	if(Request::ajax()){
+// 		return Responce::json(Request::all());
+// 	}
+// });

@@ -23,15 +23,15 @@ class AdminController extends Controller
             return redirect('login')->with('gagal', 'Anda Harus Login Terlebih Dahulu');
         }
         else{
-         return view('admin.mapping')->with('files', $files);
-     }
- }
+           return view('admin.mapping')->with('files', $files);
+       }
+   }
 
- /*AKHIR INDEX*/
+   /*AKHIR INDEX*/
 
- /*FUNGSI CRUD*/
- public function upload(ShareFormRequest $request)
- {
+   /*FUNGSI CRUD*/
+   public function upload(ShareFormRequest $request)
+   {
     $upload = "N";
     if($request->hasFile('file'))
     {
@@ -162,16 +162,12 @@ public function retrace(Request $request){
         'input' => $request->input
     ];
     $uploads = upload::orderBy('version', 'asc')->get();
+    // dd($data);
     return view('admin.retrace', compact('uploads','data'));
-}
+    // return view('admin.retrace', compact('uploads'));
+    }
 
-public function retraceProcess(Request $request)
-{
-    $data = [
-        'version' => $request->version,
-        'input' => $request->input
-    ];
-
-    return redirect()->route('admin.retrace')->with('input', $data);
-}
+public function process(Request $request){
+    echo ("here");
+   }
 }
