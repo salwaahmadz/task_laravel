@@ -157,9 +157,11 @@ public function registerPost(request $request)
 /*Retrace*/
 
 public function retrace(Request $request){
+    
     $data = [
-        'version' => $request->version,
-        'input' => $request->input
+        'version' => "",
+        'input' => "",
+        'result' => ""
     ];
     $uploads = upload::orderBy('version', 'asc')->get();
     // dd($data);
@@ -168,6 +170,15 @@ public function retrace(Request $request){
     }
 
 public function process(Request $request){
-    echo ("here");
-   }
+    //dd($request->all());
+    $data = [
+        'version' => $request->version,
+        'input' => $request->input,
+        'result' => $request->input
+    ];
+
+    $uploads = upload::orderBy('version', 'asc')->get();
+
+    return view('admin.retrace', compact('uploads','data'));
+    }
 }
