@@ -66,7 +66,7 @@
 
 
 <!-- Main Content -->
-<h4 style="text-align: center;">Please insert the fuscate text</h4>
+<h4 style="text-align: center;">Please insert the obfuscate text</h4>
 <textarea style="width: 80%; height: 250px; margin-left: 20px;" name="input" id="input">{{\Request::get('input')}}</textarea>
 <br>
 <br>
